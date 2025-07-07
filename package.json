@@ -1,18 +1,12 @@
 {
-  "name": "news-api",
+  "name": "fixjson-api",
   "version": "1.0.0",
-  "description": "Fake REST API for Sports News using JSON Server",
+  "description": "Fake REST API using json-server for SportSync",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": ["json-server", "api", "news", "sports"],
-  "author": "kelompok4",
-  "license": "MIT",
   "dependencies": {
-    "json-server": "^0.17.3"
-  },
-  "engines": {
-    "node": ">=16.x"
+    "json-server": "^0.17.4"
   }
 }

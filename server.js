@@ -1,14 +1,22 @@
-// server.js
 const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
+// Pakai port dari Railway atau default 3000
+const port = process.env.PORT || 3000;
+
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
+
+// Log request method dan URL
+server.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+ 
 server.use(router);
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
+server.listen(port, () => {
+  console.log(`JSON Server is running on port ${port}`);
 });

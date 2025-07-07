@@ -3,20 +3,20 @@ const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
-// Pakai port dari Railway atau default 3000
-const port = process.env.PORT || 3000;
-
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-// Log request method dan URL
+// Izinkan method POST, PUT, DELETE
 server.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
+  res.header('Access-Control-Allow-Origin', '*'); // CORS
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
- 
+
 server.use(router);
 
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`JSON Server is running on port ${port}`);
 });
